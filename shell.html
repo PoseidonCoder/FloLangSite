@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FateLang</title>
     <link rel="stylesheet" href="style.css">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.57.0/codemirror.min.css"></link>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.57.0/codemirror.min.js"></script>
+    <link rel="stylesheet" href="https://codemirror.net/theme/cobalt.css">
 
     <style>
         center div, center textarea, center button {width: 400px;}
@@ -32,9 +33,9 @@
         </a>
     </ul>
 
-    <center>
-        <textarea id="code" style="min-height: 200px; margin-top: 5px;"></textarea>
-        
+    <textarea id="code" style="min-height: 200px; margin-top: 5px;"></textarea>
+
+    <center>        
         <br>
         <div>
             <label for="wantAST">Do you want to see the AST? </label>
@@ -51,11 +52,12 @@
         </div>
     </center>
 
-    <script src="bundle.js"></script>
+    <script src="langCode/bundle.js"></script>
     
 <script>
-CodeMirror.fromTextArea(code, {
-    lineNumbers: true
+var editor = CodeMirror.fromTextArea(code, {
+    lineNumbers: true,
+    theme: "cobalt"
 });
 
 (function(){
