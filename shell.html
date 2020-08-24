@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.57.0/codemirror.min.css"></link>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.57.0/codemirror.min.js"></script>
+    <script src="https://codemirror.net/addon/edit/closebrackets.js"></script>
     <link rel="stylesheet" href="https://codemirror.net/theme/cobalt.css">
 
     <style>
@@ -52,12 +53,13 @@
         </div>
     </center>
 
-    <script src="bundle.js"></script>
+    <script src="langCode/bundle.js"></script>
     
 <script>
 var editor = CodeMirror.fromTextArea(code, {
     lineNumbers: true,
-    theme: "cobalt"
+    theme: "cobalt",
+    autoCloseBrackets: true
 });
 
 (function(){
