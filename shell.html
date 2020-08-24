@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FateLang</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.57.0/codemirror.min.css"></link>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.57.0/codemirror.min.js"></script>
+
+    <style>
+        center div, center textarea, center button {width: 400px;}
+    </style>
+</head>
+<body>    
+    <ul id="nav">
+        <a href="index.html">
+            <img src="FateLangLogo.png" style="width: 60px; height: 50px; position: absolute; left: 0; top: 0">
+        </a>
+        
+        <a href="#">
+            <li>
+                FateShell
+            </li>
+        </a>
+
+        <a href="download.html">
+            <li>
+                Downloads
+            </li>
+        </a>
+    </ul>
+
+    <center>
+        <textarea id="code" style="min-height: 200px; margin-top: 5px;"></textarea>
+        
+        <br>
+        <div>
+            <label for="wantAST">Do you want to see the AST? </label>
+            <input id="wantAST" type="radio">
+        </div>
+        <br>
+
+        <button id="runBtn">run</button>
+
+        <p id="res"></p>
+
+        <div class="container">
+            <p id="astTxt" style="white-space: break-spaces;"></p>
+        </div>
+    </center>
+
+    <script src="langCode/bundle.js"></script>
+    
+<script>
+CodeMirror.fromTextArea(code, {
+    lineNumbers: true
+});
+
+(function(){
+    var checked = true;
+
+    wantAST.onclick = function(){
+        checked = !checked;
+        wantAST.checked = !checked;
+    }
+})()
+</script>
+</body>
+</html>
