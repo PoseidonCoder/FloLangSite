@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://codemirror.net/theme/cobalt.css">
 
     <style>
-        center div, center button {width: 400px;}
+        center div, center button {width: 400px; margin-top: 10px;}
     </style>
 </head>
 <body>    
@@ -33,6 +33,12 @@
                 Downloads
             </li>
         </a>
+
+        <a href="documentation.html">
+            <li>
+                Documentation
+            </li>
+        </a>
     </ul>
 
     <textarea id="code" style="min-height: 200px; margin-top: 5px;"></textarea>
@@ -47,9 +53,7 @@
 
         <button id="runBtn">run</button>
 
-        <!-- <p id="res"></p> -->
-
-        <div class="container">
+        <div style="display: none;" class="container">
             <p id="astTxt" style="white-space: break-spaces;"></p>
         </div>
 
@@ -77,7 +81,7 @@ var editor = CodeMirror.fromTextArea(code, {
 })()
 </script>
 
-<script src="bundle.js"></script>
+<script src="langCode/bundle.js"></script>
 
 </body>
 </html>
