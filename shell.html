@@ -47,14 +47,17 @@
 
         <button id="runBtn">run</button>
 
-        <p id="res"></p>
+        <!-- <p id="res"></p> -->
 
         <div class="container">
             <p id="astTxt" style="white-space: break-spaces;"></p>
         </div>
-    </center>
 
-    <script src="bundle.js"></script>
+        <div class="container" style="height: 400px; overflow: auto;">
+            <h3>Console:</h3>
+            <p id="cons"></p>
+        </div>
+    </center>
     
 <script>
 var editor = CodeMirror.fromTextArea(code, {
@@ -73,5 +76,8 @@ var editor = CodeMirror.fromTextArea(code, {
     }
 })()
 </script>
+
+<script src="langCode/bundle.js"></script>
+
 </body>
 </html>
