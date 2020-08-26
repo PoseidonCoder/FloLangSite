@@ -27,14 +27,9 @@ button, #nav li {padding: 20px;}
     background: #0C1618;
 }
 
-textarea, button, .container {
+button, .container {
     border-radius: 20px;
     background: black;
-}
-
-textarea {
-    padding: 10px;
-    resize: vertical;
 }
 
 button {cursor: pointer; border: none;}
@@ -42,6 +37,8 @@ button {cursor: pointer; border: none;}
 input[type="radio"] {cursor: pointer;}
 
 .container {
-    text-align: left;
     padding: 10px;
+    width: 600px;
 }
+
+.container * {text-align: left;}
