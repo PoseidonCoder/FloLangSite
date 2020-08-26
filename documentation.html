@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FateLang</title>
+    <link rel="icon" href="FateLangLogo.png">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.57.0/codemirror.min.css"></link>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.57.0/codemirror.min.js"></script>
+    <link rel="stylesheet" href="https://codemirror.net/theme/cobalt.css">
+
+    <style>
+        .code {
+            white-space: pre-line;
+        }
+
+        .pop {
+            color: rgb(201, 48, 48);
+            background-color: rgb(226, 152, 68);
+            border-radius: 25px;
+            padding: 5px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="nav">
+        <a href="index.html">
+            <img src="FateLangLogo.png" style="width: 60px; height: 50px; position: absolute; left: 0; top: 0">
+        </a>
+        
+        <a href="shell.html">
+            <li>
+                FateShell
+            </li>
+        </a>
+
+        <a href="#">
+            <li>
+                Downloads
+            </li>
+        </a>
+
+        <a href="#">
+            <li>
+                Documentation
+            </li>
+        </a>
+    </ul>
+
+    <center>
+        <div class="container">
+            <h1>Flo</h1>
+            <p>Made by Pavi, Matthew, and Lukas</p>
+
+            <h4>A quick example:</h4>
+            <div class="code" data-code="//Defining a function named 'hello'
+fun hello (txt) {
+    print(txt)
+}
+
+//Declaring a variable named 'txt' with the value 'Hello World!'
+set txt = 'Hello World!'
+hello(txt)"></div>
+
+            <h2>Functions:</h3>
+            <span>Defining:<span>
+            <div class="code" data-code="fun {name} (args*) {
+    {code}
+}"></div>
+            <br>
+
+            <span>Calling:</span>
+            <div class="code" data-code="{name}()"></div>
+
+            <h2>Variables:</h2>
+
+            <span>Defining:</span>
+            <div class="code" data-code="set {name} = {value}"></div>
+
+            <span>Calling:</span>
+            <div class="code" data-code="{name} //returns value"></div>
+        </div>
+    </center>
+
+<script>
+    var code = document.getElementsByClassName("code");
+    for (var i=0; i<code.length; i++) {
+        CodeMirror(code[i], {
+            value: code[i].getAttribute("data-code"),
+            lineNumbers: true,
+            readOnly: true,
+            theme: "cobalt"
+        });
+
+        var lineBreaks = code[i].getAttribute("data-code").split("\n").length;
+
+        document.getElementsByClassName("CodeMirror")[i].style.height =  lineBreaks * 25 + "px";
+    }
+</script>
+</body>
+</html>
