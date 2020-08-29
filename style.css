@@ -42,3 +42,9 @@ input[type="radio"] {cursor: pointer;}
 }
 
 .container * {text-align: left;}
+
+@media (max-width: 486px) {
+    #nav li {
+        width: 95px;
+    }
+}
