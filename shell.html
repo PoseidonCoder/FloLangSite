@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FateLang</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="FateLangLogo.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.57.0/codemirror.min.css"></link>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.57.0/codemirror.min.js"></script>
@@ -62,7 +63,9 @@
             <p id="cons"></p>
         </div>
     </center>
-    
+
+<script src="bundOf.js"></script>
+
 <script>
 var editor = CodeMirror.fromTextArea(code, {
     lineNumbers: true,
@@ -70,6 +73,27 @@ var editor = CodeMirror.fromTextArea(code, {
     autoCloseBrackets: true,
     matchBrackets: true
 });
+
+console.log = txt=> {
+    cons.innerHTML += txt;
+}
+
+function run () {
+	global.run(editor.doc.getValue())
+	cons.innerHTML += "<hr>";
+}
+
+runBtn.onclick = run;
+var pressed = {};
+
+document.onkeydown = e=> {
+    pressed[e.key]=true;
+    if (pressed.Control && pressed.Enter) {
+		run();
+    }
+}
+
+document.onkeyup = e=> {pressed[e.key]=false;}
 
 (function(){
     var checked = true;
@@ -80,8 +104,6 @@ var editor = CodeMirror.fromTextArea(code, {
     }
 })()
 </script>
-
-<script src="bundle.js"></script>
 
 </body>
 </html>
