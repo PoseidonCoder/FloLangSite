@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FloLang - download</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" href="../FloLangLogo.png">
+</head>
+<body>
+    <ul id="nav">
+        <a href="../index.html">
+            <img alt="homepage" src="../FloLangLogo.png" style="width: 80px; height: 50px; position: absolute; left: -10px; top: 0">
+        </a>
+        
+        <a href="../shell.html">
+            <li>
+                FloShell
+            </li>
+        </a>
+
+        <a href="../download.html">
+            <li>
+                Downloads
+            </li>
+        </a>
+
+        <a href="../documentation.html">
+            <li>
+                Documentation
+            </li>
+        </a>
+    </ul>
+
+    <center>
+        <div class="container">
+            <ul>
+                <li>
+                    Printing to the console:
+                    <div class="code" data-code="print('Hello World!')"></div>
+                </li>
+                <li>
+                    Import files:
+                    <div class="code" data-code="import({file-location})"></div>
+                </li>
+                <li>
+                    Wait:
+                    <div class="code" data-code="wait({timeout-to-wait})"></div>
+                </li>
+                <li>
+                    Execute Javascript:
+                    <div class="code" data-code="evalJS({stringified-javascript-here})"></div>
+                </li>
+                <li>
+                    Push to array:
+                    <div class="code" data-code="push({array-name}, {data-to-be-pushed})"></div>
+                </li>
+                <li>
+                    Join array:
+                    <div class="code" data-code="join({array-name})"></div>
+                </li>
+                <li>
+                    Convert data to integer:
+                    <div class="code" data-code="toInt({to-be-converted-data})"></div>
+                </li>
+                <li>
+                    Floor a float:
+                    <div class="code" data-code="floor({float})"></div> 
+                </li>
+            </ul>
+        </div>
+    </center>
+
+    <script src="../prettyCode.js"></script>
+</body>
+</html>
