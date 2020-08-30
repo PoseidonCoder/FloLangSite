@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FateLang</title>
+    <title>FloLang</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="FateLangLogo.png">
+    <link rel="icon" href="FloLangLogo.png">
     
     <meta name="keywords" content="programming language, FloLang shell, new programming language">
     <meta name="title" content="FloLang">
@@ -18,18 +18,18 @@
     <link rel="stylesheet" href="https://codemirror.net/theme/cobalt.css">
 
     <style>
-        center div, center button {width: 400px; margin-top: 10px;}
+        .question {width: 400px; margin-top: 10px;}
     </style>
 </head>
 <body>    
     <ul id="nav">
         <a href="index.html">
-            <img alt="homepage" src="FateLangLogo.png" style="width: 60px; height: 50px; position: absolute; left: 0; top: 0">
+            <img alt="homepage" src="FloLangLogo.png" style="width: 80px; height: 50px; position: absolute; left: -10px; top: 0">
         </a>
         
         <a href="#">
             <li>
-                FateShell
+                FloShell
             </li>
         </a>
 
@@ -46,31 +46,42 @@
         </a>
     </ul>
 
-    <textarea id="code" style="min-height: 200px; margin-top: 5px;"></textarea>
+    <center>
+        <button class="question" id="runBtn">run</button>
 
-    <center>        
         <br>
-        <div>
+        <div class="question">
             <label for="wantAST">Do you want to see the AST? </label>
             <input id="wantAST" type="radio">
         </div>
         <br>
+    </center>
 
-        <button id="runBtn">run</button>
+    <textarea id="code" style="min-height: 200px; margin-top: 5px;"></textarea>
+
+    <br>
+    <center>        
+        <div class="container" style="height: 400px; overflow: auto;">
+            <h3 style="text-align: center;">
+                Console:
+                <button title="clear console" onclick="cons.innerText=''">
+                    <img style="width: 25px; height: 25px;" src="clear.png" alt="Clear console">
+                </button>
+            </h3>
+            <hr>
+
+            <p style="white-space: pre-line;" id="cons"></p>
+        </div>
 
         <div style="display: none;" class="container">
             <p id="astTxt" style="white-space: break-spaces;"></p>
         </div>
-
-        <div class="container" style="height: 400px; overflow: auto;">
-            <h3>Console:</h3>
-            <p style="white-space: break-spaces;" id="cons"></p>
-        </div>
     </center>
 
-<script src="bundOf.js"></script>
+<script src="langCode/bundOf.js"></script>
 
 <script>
+//Setting up CodeMirror
 var editor = CodeMirror.fromTextArea(code, {
     lineNumbers: true,
     theme: "cobalt",
@@ -78,16 +89,27 @@ var editor = CodeMirror.fromTextArea(code, {
     matchBrackets: true
 });
 
+//Rederecting
 console.log = txt=> {
-    cons.innerHTML += txt;
+    cons.innerHTML += txt
 }
 
 function run () {
-	global.run(editor.doc.getValue())
+    var runned = global(editor.doc.getValue())
+    
+    if (wantAST.checked) {
+        astTxt.parentNode.display = "contents";
+        astTxt.innerText = runned;
+    } else {
+        astTxt.parentNode.display = "none";
+    }
+
 	cons.innerHTML += "<hr>";
 }
 
+//Adding event listeners
 runBtn.onclick = run;
+
 var pressed = {};
 
 document.onkeydown = e=> {
@@ -100,11 +122,11 @@ document.onkeydown = e=> {
 document.onkeyup = e=> {pressed[e.key]=false;}
 
 (function(){
-    var checked = true;
+    var checked = false;
 
-    wantAST.onclick = function(){
+    wantAST.onclick = ()=> {
         checked = !checked;
-        wantAST.checked = !checked;
+        wantAST.checked = checked;
     }
 })()
 </script>
