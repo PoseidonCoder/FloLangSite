@@ -11,10 +11,6 @@
     <link rel="icon" href="FloLangLogo.png">
     <link rel="stylesheet" href="style.css">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.57.0/codemirror.min.css"></link>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.57.0/codemirror.min.js"></script>
-    <link rel="stylesheet" href="https://codemirror.net/theme/cobalt.css">
-
     <style>
         .code {
             white-space: pre-line;
@@ -37,7 +33,7 @@
         
         <a href="shell.html">
             <li>
-                FateShell
+                FloShell
             </li>
         </a>
 
@@ -58,16 +54,9 @@
         <div class="container">
             <h1>Flo</h1>
             <p>Made by Pavi, Matthew, and Lukas</p>
-
-            <h4>A quick example:</h4>
-            <div class="code" data-code="//Defining a function named 'hello'
-fun hello (txt) {
-    print(txt)
-}
-
-//Declaring a variable named 'txt' with the value 'Hello World!'
-set txt = 'Hello World!'
-hello(txt)"></div>
+            <em>
+                <h3>{} is a placeholder</h3>
+            </em>
 
             <h2>Functions:</h3>
             <span>Defining:<span>
@@ -86,23 +75,78 @@ hello(txt)"></div>
 
             <span>Calling:</span>
             <div class="code" data-code="{name} //returns value"></div>
+
+            <h2>For loops:</h2>
+            <div class="code" data-code="loop {start} < {variable} < {end} ^ {skip} {
+    {code}
+}"></div>
+
+            <h2>Loop backwards:</h2>
+            <div class="code" data-code="loop 10 < a < 1 ^ -1 {
+    print(a)
+}"></div>
+            <h2>Returning data from a function:</h2>
+            <p>The last experession of a function is returned</p>
+            <div class="code" data-code="fun double (number) {
+    number * 2
+}"></div>
+
+            <h2>Arrays:</h2>
+            <em>These numbers were chosen arbitrarily</em>
+            <div class="code" data-code="set array = [1, 2, 3]
+print(array[0])
+//Returns the index 0 of the array"></div>
+        </div>
+    </center>
+    
+    <br>
+
+    <center>
+        <div class="container">
+            <h1>Examples</h1>
+
+            <h4>A quick example:</h4>
+            <div class="code" data-code="//Defining a function named 'hello'
+fun hello (txt) {
+print(txt)
+}
+
+//Declaring a variable named 'txt' with the value 'Hello World!'
+set txt = 'Hello World!'
+hello(txt)"></div>
+
+            <h4>A fibonacci demo:</h4>
+            <div class="code" data-code="set history = [0, 1, 1]
+set times = 10
+
+//Subtract 3 (because we start with 3 Items)(history)
+times = times - 3
+
+set pushthis = null
+//Loop and push
+loop 2 < a < times ^ 1{
+pushthis = history[a] + history[-1+a]
+push(history, pushthis)
+}
+print(history)"></div>
         </div>
     </center>
 
-<script>
-    var code = document.getElementsByClassName("code");
-    for (var i=0; i<code.length; i++) {
-        CodeMirror(code[i], {
-            value: code[i].getAttribute("data-code"),
-            lineNumbers: true,
-            readOnly: true,
-            theme: "cobalt"
-        });
+    <center>
+		<ul class="container">
+            <li>
+                In-built
+                <ul>
+                    <li>
+                        <a href="doc/in-built-variables.html">In-built variables</a>
+                    </li>
+                    <li>
+                        <a href="doc/in-built-functions.html">In-built functions</a>
+                    </li>
+                </ul>
+            </li>
+    </center>
 
-        var lineBreaks = code[i].getAttribute("data-code").split("\n").length;
-
-        document.getElementsByClassName("CodeMirror")[i].style.height =  lineBreaks * 25 + "px";
-    }
-</script>
+    <script src="prettyCode.js"></script>
 </body>
 </html>
